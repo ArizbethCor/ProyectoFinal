@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        
+        // estadio de verificacion de lo ingreso por el usuario
+        System.out.println("Select your language");
+        System.out.println("Escoga un idioma");
+        System.out.println("A) English");
+        System.out.println("B) Español");
+        System.out.print("-> ");
+        Scanner sc = new Scanner(System.in);  
+        String language = sc.nextLine(); 
+        language = language.toLowerCase(); // covert to lowercase
+
+        Wordle newGame;
+
+        while (! Wordle.languagePossibilities.contains(language) ) {
+            System.out.println("The language selected is not one of the options available. Please, pick one the following options: ");
+            System.out.println("El idioma elegido no es una de las opciones disponible. Por favor, eliga una de las siguientes opciones: ");
+            System.out.println("A) English");
+            System.out.println("B) Español");
+            System.out.print("-> ");
+            language = sc.nextLine(); 
+            language = language.toLowerCase();
+        }
+
+        if (language.equals("english") || language.equals("a")) {
+            newGame = new English();
+        } else { 
+            newGame = new Spanish();
+        }
+        newGame.play();
+    }
+}
